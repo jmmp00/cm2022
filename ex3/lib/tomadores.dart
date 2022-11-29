@@ -1,27 +1,20 @@
-import 'apolice.dart';
+import 'package:ex3/tipo_seguro.dart';
 
 class Tomadores {
-  String? nome_tomador;
-  String? morada_tomador;
-  int? idade_tomador;
+  String? nomeTomador;
+  String? moradaTomador;
+  int? idade;
   String? nomesegurado;
-  String? tiposegurado;
+  TipoSeguro tipoSeguro;
 
-  Tomadores(this.nome_tomador, this.morada_tomador, this.idade_tomador,
-      this.nomesegurado, this.tiposegurado);
-
-  get tomadores => null;
-
-  void apoliceTomador() {
-    tomadores.where((i) => i.nome_tomador != null).forEach((i) => {
-          print('O tomador ${i.nome_tomador} tem as apolices: '),
-          apolices
-              .where((e) => e.nomeTomador == i.nome_tomador && e.ativo == true)
-              .forEach((e) => print('''Apolice...
-      Tomador : ${e.nomeTomador}
-      Cobertura: ${e.cobertura}
-      Valor Anual: ${e.valorAnual}
-      Seguradora: ${e.nomeSeguradora}'''))
-        });
-  }
+  Tomadores(this.nomeTomador, this.moradaTomador, this.idade, this.nomesegurado, this.tipoSeguro);
 }
+
+List<Tomadores> tomadores= [
+  Tomadores("Joana Pinheiro", "Rua Qnt Pedras, 261, Vila Nova de Gaia", 22, "Opel Corsa", TipoSeguro.automovel),
+  Tomadores("Telmo Santos", "Rua da Casa Rosa, 123, Escapães", 22, "Dentário", TipoSeguro.saude),
+  Tomadores("Gustavo Gomes", "Rua da Boa Nova, 38, Porto", 32, "Imobiliário", TipoSeguro.casa),
+  Tomadores("Margarida Soares", "Avenida do Pombal, 291, Porto", 28, "Casa", TipoSeguro.casa),
+  Tomadores("Ana Fernandes", "Rua Capitão Fausto, 52, Vila Nova de Gaia", 39, "Viagem", TipoSeguro.viagem),
+  Tomadores("Filipe Antunes", "Travessa do fim, 287, Porto", 30, "Visão", TipoSeguro.saude),
+];

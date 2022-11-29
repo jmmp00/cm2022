@@ -1,29 +1,32 @@
 import 'dart:io';
 import 'dart:math';
-
 import '../lib/apolice.dart';
-
 import '../lib/seguradora.dart';
 import '../lib/tipo_seguro.dart';
+import '../lib/tomadores.dart';
 
 void main(List<String> arguments) {
+
+  while (true){
   print("\n");
+  print("-----------------------------------------------------------------------------");
   print("             Seguradora 'Surpresas Existem!'");
   print("\n");
-  print("--------------Escolha uma das opções abaixo--------------");
+  print("------------------------Escolha uma das opções abaixo------------------------");
   print("1 - Quantidade de apólices ativas");
   print("2 - Quantidade de apólices inativas");
-  print(
-      "3 - Quantidade de apólices ativas e valor médio segurado por seguradora");
-  print(
-      "4 - Quantidade de apólices inativas e valor médio segurado por seguradora");
-  print("-------------------Sobre cada apólice--------------------");
-  print("5 - Seguradora");
-  print("6 - Tomador");
-  print("7 - Segurado");
-  print("8 - Tipos de Seguros");
-  print("9 - Apólices");
+  print("3 - Quantidade de apólices ativas e valor médio segurado por seguradora");
+  print("4 - Quantidade de apólices ativas e valor médio segurado por tipo de seguro");
+  print("5 - Apólices ativas e valor do prémio a pagar por seguradora");
+  print("6 - Apólices ativas e valor do prémio a pagar por tipo de seguro");
+  print("-----------------------------Sobre cada apólice------------------------------");
+  print("7 - Seguradora");
+  print("8 - Tomador");
+  print("9 - Segurado");
+  print("10 - Tipos de Seguros");
+  print("11 - Apólices");
   print("0 - Sair");
+  print("-----------------------------------------------------------------------------");
   print("\n");
 
   var input = stdin.readLineSync()!;
@@ -47,11 +50,39 @@ void main(List<String> arguments) {
       break;
 
     case 3:
-      break;
-    case 4:
-      break;
+      int numero = 0;
+      print("--Selecione a Seguradora:--");
+      seguradoras.forEach((element) => {
+        numero += numero,
+        stdout.write(numero),
+        stdout.write(" - "),
+        stdout.write("${element.nomeSeguradora}")});
 
-    case 5:
+    break;
+    
+    case 4:
+      double totalCobertura2 = 0.0;      
+      double mediaCobertura2 = 0.0;
+      apolices.where((e) => e.ativo == true).forEach((e) => { 
+        tomadores.where((i) => i.tipoSeguro.name == e.tipoSeguro.name).forEach((i) => { 
+          totalCobertura2 += e.cobertura
+        }),
+        mediaCobertura2 = totalCobertura2 / (seguradoras.where((element) => element.nomeSeguradora == e.nomeSeguradora).length),
+        stdout.write("A média da cobertura do Tipo de seguro ${e.tipoSeguro.name} é: "),
+        stdout.write(mediaCobertura2),
+        stdout.write(" €.\n")
+      });
+    break;
+
+    case 5: 
+
+    break;
+
+    case 6:
+    
+    break;
+    
+    case 7:
       print("-- Seguradoras --\n");
       seguradoras.forEach((element) {
         print('Nome: ${element.nomeSeguradora}\n'
@@ -61,37 +92,41 @@ void main(List<String> arguments) {
       });
       break;
 
-    case 6:
+    case 8:
       print("-- Tomadores --\n");
-      apolices.where((i) => i.nomeTomador != null).forEach((i) => {
-            print('Tomador: ${i.nomeTomador} tem as apolices:'),
-            apolices
-                .where((e) => e.nomeTomador == i.nomeTomador && e.ativo == true)
-                .forEach((e) => print('''
-              Seguradora: ${e.nomeSeguradora},
-'''))
-          });
+
+      apolices.where((element) => element.ativo == true).forEach((element) => { 
+        tomadores.where((i) => i.nomeTomador == element.nomeTomador).forEach((i) { 
+          print('''
+              Tomador: ${element.nomeTomador},
+              Seguradora: ${element.nomeSeguradora},
+              Tipo de seguro: ${i.tipoSeguro.name},
+              Segurado: ${i.nomesegurado}
+              --------------------------------
+              Morada do Tomador: ${i.moradaTomador},
+              Idade do Tomador: ${i.idade} anos\n''');})
+      });
       break;
 
-    case 7:
+    case 9:
       print("--Seguradores --\n");
       apolices.forEach((e) {
         print('''
             Segurado: ${e.segurado}
             Tomador : ${e.nomeTomador}
             Nome Seguradora : ${e.nomeSeguradora}
-            Tipo Seguradora : ${e.tipoSeguro}''');
+            Tipo Seguradora : ${e.tipoSeguro.name}\n''');
       });
       break;
 
-    case 8:
+    case 10:
       print("-- Tipos de Seguros --\n");
       TipoSeguro.values.forEach((element) {
         print('${element.name}');
       });
       break;
 
-    case 9:
+    case 11:
       print("-- Apolices --\n");
       apolices.forEach((element) {
         print('Nome do Tomador: ${element.nomeTomador}\n'
@@ -106,6 +141,6 @@ void main(List<String> arguments) {
 
     case 0:
       print("Até à próxima! :)");
-      break;
-  }
+      exit(0);
+  }}
 }
