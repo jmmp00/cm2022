@@ -3,12 +3,12 @@ import 'tomadores.dart';
 
 class Apolice {
   String? nomeTomador;
-  String nomeSeguradora;
+  String? nomeSeguradora;
   TipoSeguro tipoSeguro;
-  double tempoDeSeguro;
-  String segurado;
-  double cobertura;
-  double valorAnual;
+  double? tempoDeSeguro;
+  String? segurado;
+  double? cobertura;
+  double? valorAnual;
   bool ativo;
 
   Apolice(

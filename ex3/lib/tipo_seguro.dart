@@ -1,1 +1,1 @@
-enum TipoSeguro {saude, automovel, casa, viagem}
+enum TipoSeguro { saude, automovel, casa, viagem }
