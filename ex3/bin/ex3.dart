@@ -1,10 +1,9 @@
 import 'dart:io';
 import 'dart:math';
-
 import '../lib/apolice.dart';
-
 import '../lib/seguradora.dart';
 import '../lib/tipo_seguro.dart';
+import '../lib/tomadores.dart';
 
 void main(List<String> arguments) {
   while (true) {
@@ -48,10 +47,34 @@ void main(List<String> arguments) {
             .length); //mostra a quantidade de apolices quando o elemento "ativo" for "false"
         stdout.write(" apólices inativas.");
         break;
-
       case 3:
+        int numero = 0;
+        print("--Selecione a Seguradora:--");
+        seguradoras.forEach((element) => {
+              numero += numero,
+              stdout.write(numero),
+              stdout.write(" - "),
+              stdout.write("${element.nomeSeguradora}")
+            });
+
         break;
       case 4:
+        double totalCobertura2 = 0.0;
+        double mediaCobertura2 = 0.0;
+        apolices.where((e) => e.ativo == true).forEach((e) => {
+              tomadores
+                  .where((i) => i.tipoSeguro.name == e.tipoSeguro.name)
+                  .forEach((i) => {totalCobertura2 += e.cobertura}),
+              mediaCobertura2 = totalCobertura2 /
+                  (seguradoras
+                      .where((element) =>
+                          element.nomeSeguradora == e.nomeSeguradora)
+                      .length),
+              stdout.write(
+                  "A média da cobertura do Tipo de seguro ${e.tipoSeguro.name} é: "),
+              stdout.write(mediaCobertura2),
+              stdout.write(" €.\n")
+            });
         break;
       case 5:
         print("-- Seguradoras --\n");

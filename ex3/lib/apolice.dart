@@ -1,5 +1,4 @@
 import 'tipo_seguro.dart';
-import 'tomadores.dart';
 
 class Apolice {
   String? nomeTomador;
@@ -27,7 +26,7 @@ List<Apolice> apolices = [
       "Opel Corsa", 325.5, 950, true),
   Apolice("Telmo Santos", "Médis", TipoSeguro.saude, 25, "Dentário", 453.8,
       1380, true),
-  Apolice("GG", "OK! Teleseguros", TipoSeguro.casa, 30, "Imobiliario", 304,
+  Apolice("Gustavo Gomes", "OK! Teleseguros", TipoSeguro.casa, 30, "Imobiliario", 304,
       963.7, true),
   Apolice("Margarida Soares", "Fidelidade", TipoSeguro.casa, 35, "Casa", 406,
       1204.2, true),
