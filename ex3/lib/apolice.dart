@@ -6,7 +6,7 @@ class Apolice {
   TipoSeguro tipoSeguro;
   double? tempoDeSeguro;
   String? segurado;
-  double? cobertura;
+  double cobertura;
   double? valorAnual;
   bool ativo;
 
@@ -19,6 +19,9 @@ class Apolice {
       this.cobertura,
       this.valorAnual,
       this.ativo);
+  @override
+  String toString() =>
+      'Nome Tomador: $nomeTomador --> Nome Seguradora: $nomeSeguradora';
 }
 
 List<Apolice> apolices = [
@@ -26,8 +29,8 @@ List<Apolice> apolices = [
       "Opel Corsa", 325.5, 950, true),
   Apolice("Telmo Santos", "Médis", TipoSeguro.saude, 25, "Dentário", 453.8,
       1380, true),
-  Apolice("Gustavo Gomes", "OK! Teleseguros", TipoSeguro.casa, 30, "Imobiliario", 304,
-      963.7, true),
+  Apolice("Gustavo Gomes", "OK! Teleseguros", TipoSeguro.casa, 30,
+      "Imobiliario", 304, 963.7, true),
   Apolice("Margarida Soares", "Fidelidade", TipoSeguro.casa, 35, "Casa", 406,
       1204.2, true),
   Apolice("Ana Fernandes", "Fidelidade", TipoSeguro.viagem, 2, "Viagem", 300,

@@ -1,9 +1,9 @@
 import 'dart:io';
-import 'dart:math';
-import '../lib/apolice.dart';
-import '../lib/seguradora.dart';
-import '../lib/tipo_seguro.dart';
-import '../lib/tomadores.dart';
+import 'package:ex3/apolice.dart';
+import 'package:ex3/data/seguradoras.dart';
+import 'package:ex3/seguradora.dart';
+import 'package:ex3/tipo_seguro.dart';
+import 'package:ex3/tomadores.dart';
 
 void main(List<String> arguments) {
   while (true) {
@@ -25,9 +25,10 @@ void main(List<String> arguments) {
     print("9 - Apólices");
     print("15 - Inserir Apolice");
     print("16 - Adicionar Seguradora");
+    print("17 - Delete Seguradora");
     print("0 - Sair");
     print("\n");
-
+    Seguradoras nelo = Seguradoras();
     var input = stdin.readLineSync()!;
     var escolha = int.parse(input);
     switch (escolha) {
@@ -79,7 +80,8 @@ void main(List<String> arguments) {
       case 5:
         print("-- Seguradoras --\n");
         seguradoras.forEach((element) {
-          print('Nome: ${element.nomeSeguradora}\n'
+          print('Id : ${element.id}\n'
+              'Nome: ${element.nomeSeguradora}\n'
               'Morada: ${element.moradaSeguradora}\n'
               'Ano de Fundação: ${element.anoCriacao}\n'
               'Contacto: ${element.numeroTelefone}\n');
@@ -163,10 +165,16 @@ void main(List<String> arguments) {
         print("Insira o numero de Telefone");
         String? numeroTelefone = stdin.readLineSync();
         int nt = int.parse(numeroTelefone!);
-        seguradoras.add(Seguradora(nome, morada, ac, nt));
+        nelo.add(Seguradora(5, nome, morada, ac, nt));
+        print(nelo.list);
         print("-----------------------------------------------------");
         break;
+      case 17:
+        int id = int.parse(stdin.readLineSync()!);
+        var index = nelo.list.indexWhere((i) => i.id == id);
+        nelo.delete(nelo.list[0]);
 
+        break;
       case 0:
         print("Até à próxima! :)");
         exit(2);
