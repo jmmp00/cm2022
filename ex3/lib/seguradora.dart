@@ -8,8 +8,11 @@ class Seguradora {
   Seguradora(this.id, this.nomeSeguradora, this.moradaSeguradora,
       this.anoCriacao, this.numeroTelefone);
   @override
-  String toString() =>
-      'Nome Seguradora: $nomeSeguradora --> Morada Seguradora: $moradaSeguradora --> ID: $id';
+  String toString() => '''Nome Seguradora: $nomeSeguradora
+       Morada Seguradora: $moradaSeguradora
+       Ano de Criação: $anoCriacao
+       Numero de Telefone: $numeroTelefone
+        ID: $id''';
 }
 
 List<Seguradora> seguradoras = [

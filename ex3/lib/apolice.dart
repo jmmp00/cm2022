@@ -20,8 +20,13 @@ class Apolice {
       this.valorAnual,
       this.ativo);
   @override
-  String toString() =>
-      'Nome Tomador: $nomeTomador --> Nome Seguradora: $nomeSeguradora';
+  String toString() => '''Nome Tomador: $nomeTomador
+      Nome Seguradora: $nomeSeguradora
+      Tipo de Seguro: $tipoSeguro
+      Segurado: $segurado
+      Cobertura: $cobertura
+      Valor Anual: $valorAnual
+      Ativo: $ativo''';
 }
 
 List<Apolice> apolices = [

@@ -10,8 +10,12 @@ class Tomadores {
   Tomadores(this.nomeTomador, this.moradaTomador, this.idade, this.nomesegurado,
       this.tipoSeguro);
   @override
-  String toString() =>
-      'Nome Tomador: $nomeTomador --> Morada Tomador: $moradaTomador';
+  String toString() => '''Nome Tomador: $nomeTomador
+      Morada Tomador: $moradaTomador
+      Idade Tomador: $idade
+      Nome do Segurado: $nomesegurado
+      Tipo Seguro: $tipoSeguro
+      ''';
 }
 
 List<Tomadores> tomadores = [
