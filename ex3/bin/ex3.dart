@@ -34,27 +34,29 @@ void main(List<String> arguments) {
     print(
         "| 6 - Apólices ativas e valor do prémio a pagar por tipo de seguro                        |");
     print(
+        "| 7 - Relatório dos prémios a pagar                                                       |");
+    print(
         "|                                                                                         |");
     print(
         "|-----------------------------------Sobre cada apólice------------------------------------|");
     print(
         "|                                                                                         |");
     print(
-        "| 7 - Seguradora                                                                          |");
+        "| 8 - Seguradora                                                                          |");
     print(
-        "| 8 - Tomador                                                                             |");
+        "| 9 - Tomador                                                                             |");
     print(
-        "| 9 - Segurado                                                                            |");
+        "| 10 - Segurado                                                                            |");
     print(
-        "| 10 - Tipos de Seguros                                                                   |");
+        "| 11 - Tipos de Seguros                                                                   |");
     print(
-        "| 11 - Apólices                                                                           |");
+        "| 12 - Apólices                                                                           |");
     print(
-        "| 12 - Inserir Apolice                                                                    |");
+        "| 13 - Inserir Apolice                                                                    |");
     print(
-        "| 13 - Inserir Seguradora                                                                 |");
+        "| 14 - Inserir Seguradora                                                                 |");
     print(
-        "| 14 - Apagar Seguradora                                                                  |");
+        "| 15 - Apagar Seguradora                                                                  |");
     print(
         "| 0 - Sair                                                                                |");
     print(
@@ -239,12 +241,148 @@ void main(List<String> arguments) {
         break;
 
       case 5:
+        //criação de uma lista ss
+        List<String> ss = [];
+
+        //para cada apolice ativa adiciona o nome da seguradora à lista ss
+        apolices
+            .where((element) => element.ativo == true)
+            .forEach((element) => {
+                  //se o nome da seguradora nao constar na lista, este é adicionado
+                  if (ss.contains(element.nomeSeguradora) == false)
+                    {ss.add(element.nomeSeguradora)}
+                });
+
+        //sub-menu das seguradoras
+        print("\n---Escreva o nome da Seguradora:---");
+        //para que os elementos da lista sejam mostrados sem ser na forma de array: [x;y;etc]
+        ss.forEach((element) {
+          print("$element");
+        });
+        print("Prima 0 para voltar");
+        print("-----------------------------------\n");
+        //lê o input do utilizador e, caso seja 0, para
+        var ler = stdin.readLineSync()!;
+        if (ler == "0") {
+          break;
+        }
+
+        //instanciar variáveis que vão ser usadas para calcular o total dos prémios
+        double totalPremios = 0.0;
+
+        print(
+            "\nAs apólices ativas da seguradora, juntamente com o prémio anual, são:\n");
+        //elementos de apolices que estão ativos e em que o nome de seguradora é igual ao input do utilizador - usado o toUpperCase para que quer que o utilizador utilize capitalização
+        //ou não, seja possivel comparar
+        apolices
+            .where((element) =>
+                element.ativo == true &&
+                element.nomeSeguradora.toUpperCase() == ler.toUpperCase())
+            .forEach((element) => {
+                  print('''Nome: ${element.nomeTomador};
+Tipo de Seguro: ${element.tipoSeguro.name};
+Prémio anual: ${element.valorAnual} €\n'''),
+                  totalPremios += element.valorAnual,
+                });
+        print("Valor total dos prémios da Seguradora: $totalPremios €/ano.");
         break;
 
       case 6:
-        break;
+        //sub-menu dos tipos de seguros
+        print("\n--Selecione o tipo de seguro:--");
+        print("1- Saúde\n2- Automóvel\n3- Casa\n4- Viagem");
+        print("0- Voltar");
+        print("-------------------------------\n");
 
+        // lê o input do utilizador
+        var ler = stdin.readLineSync()!;
+        var escolha = int.parse(ler);
+
+        //instanciar variáveis que vão ser usadas para calcular o total dos prémios
+        double totalPremios = 0.0;
+
+        switch (escolha) {
+          case 1:
+            print(
+                "\nAs apólices ativas do Tipo de seguro 'Saúde', juntamente com o prémio anual, são:\n");
+            apolices
+                .where((element) =>
+                    element.ativo == true && element.tipoSeguro.name == "saude")
+                .forEach((element) => {
+                      print('''Nome: ${element.nomeTomador};
+Nome da Seguradora: ${element.nomeSeguradora};
+Prémio anual: ${element.valorAnual} €\n'''),
+                      totalPremios += element.valorAnual,
+                    });
+            print(
+                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            break;
+
+          case 2:
+            print(
+                "\nAs apólices ativas do Tipo de seguro 'Automóvel', juntamente com o prémio anual, são:\n");
+            apolices
+                .where((element) =>
+                    element.ativo == true &&
+                    element.tipoSeguro.name == "automovel")
+                .forEach((element) => {
+                      print('''Nome: ${element.nomeTomador};
+Nome da Seguradora: ${element.nomeSeguradora};
+Prémio anual: ${element.valorAnual} €\n'''),
+                      totalPremios += element.valorAnual,
+                    });
+            print(
+                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            break;
+
+          case 3:
+            print(
+                "\nAs apólices ativas do Tipo de seguro 'Casa', juntamente com o prémio anual, são:\n");
+            apolices
+                .where((element) =>
+                    element.ativo == true && element.tipoSeguro.name == "casa")
+                .forEach((element) => {
+                      print('''Nome: ${element.nomeTomador};
+Nome da Seguradora: ${element.nomeSeguradora};
+Prémio anual: ${element.valorAnual} €\n'''),
+                      totalPremios += element.valorAnual,
+                    });
+            print(
+                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            break;
+
+          case 4:
+            print(
+                "\nAs apólices ativas do Tipo de seguro 'Viagem', juntamente com o prémio anual, são:\n");
+            apolices
+                .where((element) =>
+                    element.ativo == true &&
+                    element.tipoSeguro.name == "viagem")
+                .forEach((element) => {
+                      print('''Nome: ${element.nomeTomador};
+Nome da Seguradora: ${element.nomeSeguradora};
+Prémio anual: ${element.valorAnual} €\n'''),
+                      totalPremios += element.valorAnual,
+                    });
+            print(
+                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            break;
+
+          case 0:
+            break;
+        }
+
+        break;
       case 7:
+        double totalPremios = 0.0;
+
+        apolices.where((element) => element.ativo == true).forEach((element) {
+          totalPremios += element.valorAnual;
+        });
+        print(
+            "O valor de todos os prémios das apólices ativas é: $totalPremios €/ano");
+        break;
+      case 8:
         print("-- Seguradoras --\n");
         //para cada elemento em seguradoras, mostra os valores
         seguradoras.forEach((element) {
@@ -256,7 +394,7 @@ void main(List<String> arguments) {
         });
         break;
 
-      case 8:
+      case 9:
         print("-- Tomadores --\n");
         //para as apólices ativas e caso o nome do tomador em tomadores seja igual ao nome do tomador em apolices, mostra os valores
         apolices
@@ -277,7 +415,7 @@ void main(List<String> arguments) {
                 });
         break;
 
-      case 9:
+      case 10:
         print("--Segurados --\n");
         //para cada elemento em apolices, mostra os valores dos segurados
         apolices.forEach((e) {
@@ -289,7 +427,7 @@ void main(List<String> arguments) {
         });
         break;
 
-      case 10:
+      case 11:
         print("-- Tipos de Seguros --\n");
         //mostra os valores dos elementos de TipoSeguros
         TipoSeguro.values.forEach((element) {
@@ -297,7 +435,7 @@ void main(List<String> arguments) {
         });
         break;
 
-      case 11:
+      case 12:
         print("-- Apolices --\n");
         //para cada elemento em apólices, mostra os valores
         apolices.forEach((element) {
@@ -311,7 +449,7 @@ void main(List<String> arguments) {
         });
         break;
 
-      case 12:
+      case 13:
         //lê os inputs do utilizador, à medida que o programa vai pedindo, para inserir esses dados em apolices
         print("------------------------Apolice----------------");
         print("Insira o nome do Tomador:");
@@ -331,7 +469,7 @@ void main(List<String> arguments) {
         print("-----------------------------------------------------");
         break;
 
-      case 13:
+      case 14:
         //lê os inputs do utilizador, à medida que o programa vai pedindo, para inserir esses dados nas seguradoras
         print("-----------------------Seguradora---------------------");
 
@@ -356,7 +494,7 @@ void main(List<String> arguments) {
         print("-----------------------------------------------------");
         break;
 
-      case 14:
+      case 15:
         //apaga das seguradoras a seguradora com o id escolhido
         print("Insira o nome da seguradora que quer apagar");
         //int id = int.parse(stdin.readLineSync()!);
