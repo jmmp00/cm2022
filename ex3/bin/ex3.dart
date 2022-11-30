@@ -7,28 +7,34 @@ import 'package:ex3/tomadores.dart';
 
 void main(List<String> arguments) {
   while (true) {
+    //menu principal - após qualquer escolha volta a aparecer, exceto se houver outro menu
     print("\n");
-    print("-----------------------------------------------------------------------------");
-    print("                   Seguradora 'Surpresas Existem!'");
-    print("\n");
-    print("------------------------Escolha uma das opções abaixo------------------------");
-    print("1 - Quantidade de apólices ativas");
-    print("2 - Quantidade de apólices inativas");
-    print("3 - Quantidade de apólices ativas e valor médio segurado por seguradora");
-    print("4 - Quantidade de apólices ativas e valor médio segurado por tipo de seguro");
-    print("5 - Apólices ativas e valor do prémio a pagar por seguradora");
-    print("6 - Apólices ativas e valor do prémio a pagar por tipo de seguro");
-    print("-----------------------------Sobre cada apólice------------------------------");
-    print("7 - Seguradora");
-    print("8 - Tomador");
-    print("9 - Segurado");
-    print("10 - Tipos de Seguros");
-    print("11 - Apólices");
-    print("12 - Inserir Apólice");
-    print("13 - Inserir Seguradora");
-    print("14 - Apagar Seguradora");
-    print("0 - Sair");
-    print("-----------------------------------------------------------------------------");
+    print("|-----------------------------------------------------------------------------------------|");
+    print("|                                    Surpresas Existem!                                   |");
+    print("|-----------------------------------------------------------------------------------------|");
+    print("|                                                                                         |");
+    print("|------------------------------Escolha uma das opções abaixo------------------------------|");
+    print("|                                                                                         |");
+    print("| 1 - Quantidade de apólices ativas                                                       |");
+    print("| 2 - Quantidade de apólices inativas                                                     |");
+    print("| 3 - Quantidade de apólices ativas e valor médio segurado (cobertura) por seguradora     |");
+    print("| 4 - Quantidade de apólices ativas e valor médio segurado (cobertura) por tipo de seguro |");
+    print("| 5 - Apólices ativas e valor do prémio a pagar por seguradora                            |");
+    print("| 6 - Apólices ativas e valor do prémio a pagar por tipo de seguro                        |");
+    print("|                                                                                         |");
+    print("|-----------------------------------Sobre cada apólice------------------------------------|");
+    print("|                                                                                         |");
+    print("| 7 - Seguradora                                                                          |");
+    print("| 8 - Tomador                                                                             |");
+    print("| 9 - Segurado                                                                            |");
+    print("| 10 - Tipos de Seguros                                                                   |");
+    print("| 11 - Apólices                                                                           |");
+    print("| 12 - Inserir Apólice                                                                    |");
+    print("| 13 - Inserir Seguradora                                                                 |");
+    print("| 14 - Apagar Seguradora                                                                  |");
+    print("| 0 - Sair                                                                                |");
+    print("|                                                                                         |");
+    print("|-----------------------------------------------------------------------------------------|");
     print("\n");
 
     Seguradoras nelo = Seguradoras(); //nova instância de seguradora
@@ -67,8 +73,12 @@ void main(List<String> arguments) {
           ss.add(element.nomeSeguradora)
         }});
 
-        print("\n--Escreva o nome da Seguradora:--");
-        stdout.write("$ss\n");
+        //sub-menu das seguradoras
+        print("\n---Escreva o nome da Seguradora:---");
+        //para que os elementos da lista sejam mostrados sem ser na forma de array: [x;y;etc]
+        ss.forEach((element) { 
+          print("$element");
+        });
         print("Prima 0 para voltar");
         print("-----------------------------------\n");
         //lê o input do utilizador e, caso seja 0, para
@@ -96,6 +106,7 @@ void main(List<String> arguments) {
         //criação de um bool para verificar se a apólice está ativa ou não
         bool ad = true;
 
+        //sub-menu dos tipos de seguros
         print("\n--Selecione o tipo de seguro:--");
         print("1- Saúde\n2- Automóvel\n3- Casa\n4- Viagem");
         print("0- Voltar");
@@ -195,9 +206,11 @@ void main(List<String> arguments) {
         break;
 
       case 5:
+
       break;
 
       case 6:
+      
       break;
 
       case 7:
