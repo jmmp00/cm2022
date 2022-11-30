@@ -30,16 +30,10 @@ class Apolice {
 }
 
 List<Apolice> apolices = [
-  Apolice("Joana Pinheiro", "OK! Teleseguros", TipoSeguro.automovel, 10,
-      "Opel Corsa", 325.5, 950, true),
-  Apolice("Telmo Santos", "Medis", TipoSeguro.saude, 25, "Dentário", 453.8,
-      1380, true),
-  Apolice("Gustavo Gomes", "OK! Teleseguros", TipoSeguro.casa, 30,
-      "Imobiliario", 304, 963.7, true),
-  Apolice("Margarida Soares", "Fidelidade", TipoSeguro.casa, 35, "Casa", 406,
-      1204.2, true),
-  Apolice("Ana Fernandes", "Fidelidade", TipoSeguro.viagem, 2, "Viagem", 300,
-      876.4, false),
-  Apolice("Filipe Antunes", "ACE Europe", TipoSeguro.saude, 20, "Visão", 349.4,
-      998.3, false),
+  Apolice("Joana Pinheiro", "OK! Teleseguros", TipoSeguro.automovel, 10, "Opel Corsa", 325.5, 950, true),
+  Apolice("Telmo Santos", "Medis", TipoSeguro.saude, 25, "Dentário", 453.8, 1380, true),
+  Apolice("Gustavo Gomes", "OK! Teleseguros", TipoSeguro.casa, 30, "Imobiliario", 304, 963.7, true),
+  Apolice("Margarida Soares", "Fidelidade", TipoSeguro.casa, 35, "Casa", 406, 1204.2, true),
+  Apolice("Ana Fernandes", "Fidelidade", TipoSeguro.viagem, 2, "Viagem", 300, 876.4, false),
+  Apolice("Filipe Antunes", "ACE Europe", TipoSeguro.saude, 20, "Visão", 349.4, 998.3, false),
 ];

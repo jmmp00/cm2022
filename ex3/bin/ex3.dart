@@ -9,60 +9,33 @@ void main(List<String> arguments) {
   while (true) {
     //menu principal - após qualquer escolha volta a aparecer, exceto se houver outro menu
     print("\n");
-    print(
-        "|-----------------------------------------------------------------------------------------|");
-    print(
-        "|                                    Surpresas Existem!                                   |");
-    print(
-        "|-----------------------------------------------------------------------------------------|");
-    print(
-        "|                                                                                         |");
-    print(
-        "|------------------------------Escolha uma das opções abaixo------------------------------|");
-    print(
-        "|                                                                                         |");
-    print(
-        "| 1 - Quantidade de apólices ativas                                                       |");
-    print(
-        "| 2 - Quantidade de apólices inativas                                                     |");
-    print(
-        "| 3 - Quantidade de apólices ativas e valor médio segurado (cobertura) por seguradora     |");
-    print(
-        "| 4 - Quantidade de apólices ativas e valor médio segurado (cobertura) por tipo de seguro |");
-    print(
-        "| 5 - Apólices ativas e valor do prémio a pagar por seguradora                            |");
-    print(
-        "| 6 - Apólices ativas e valor do prémio a pagar por tipo de seguro                        |");
-    print(
-        "| 7 - Relatório dos prémios a pagar                                                       |");
-    print(
-        "|                                                                                         |");
-    print(
-        "|-----------------------------------Sobre cada apólice------------------------------------|");
-    print(
-        "|                                                                                         |");
-    print(
-        "| 8 - Seguradora                                                                          |");
-    print(
-        "| 9 - Tomador                                                                             |");
-    print(
-        "| 10 - Segurado                                                                            |");
-    print(
-        "| 11 - Tipos de Seguros                                                                   |");
-    print(
-        "| 12 - Apólices                                                                           |");
-    print(
-        "| 13 - Inserir Apolice                                                                    |");
-    print(
-        "| 14 - Inserir Seguradora                                                                 |");
-    print(
-        "| 15 - Apagar Seguradora                                                                  |");
-    print(
-        "| 0 - Sair                                                                                |");
-    print(
-        "|                                                                                         |");
-    print(
-        "|-----------------------------------------------------------------------------------------|");
+    print("|-----------------------------------------------------------------------------------------|");
+    print("|                                    Surpresas Existem!                                   |");
+    print("|-----------------------------------------------------------------------------------------|");
+    print("|                                                                                         |");
+    print("|------------------------------Escolha uma das opções abaixo------------------------------|");
+    print("|                                                                                         |");
+    print("| 1 - Quantidade de apólices ativas                                                       |");
+    print("| 2 - Quantidade de apólices inativas                                                     |");
+    print("| 3 - Quantidade de apólices ativas e valor médio segurado (cobertura) por seguradora     |");
+    print("| 4 - Quantidade de apólices ativas e valor médio segurado (cobertura) por tipo de seguro |");
+    print("| 5 - Apólices ativas e valor do prémio a pagar por seguradora                            |");
+    print("| 6 - Apólices ativas e valor do prémio a pagar por tipo de seguro                        |");
+    print("| 7 - Relatório dos prémios a pagar                                                       |");
+    print("|                                                                                         |");
+    print("|-----------------------------------Sobre cada apólice------------------------------------|");
+    print("|                                                                                         |");
+    print("| 8 - Seguradora                                                                          |");
+    print("| 9 - Tomador                                                                             |");
+    print("| 10 - Segurado                                                                           |");
+    print("| 11 - Tipos de Seguros                                                                   |");
+    print("| 12 - Apólices                                                                           |");
+    print("| 13 - Inserir Apolice                                                                    |");
+    print("| 14 - Inserir Seguradora                                                                 |");
+    print("| 15 - Apagar Seguradora                                                                  |");
+    print("| 0 - Sair                                                                                |");
+    print("|                                                                                         |");
+    print("|-----------------------------------------------------------------------------------------|");
     print("\n");
 
     // lê o input do utilizador
@@ -72,7 +45,7 @@ void main(List<String> arguments) {
     switch (escolha) {
       case 1:
         stdout.write("Existem ");
-        print(apolices
+        stdout.write(apolices
             .where((element) => element.ativo == true)
             .length); //mostra a quantidade de apolices quando o elemento "ativo" for "true"
         stdout.write(" apólices ativas.");
@@ -131,8 +104,7 @@ void main(List<String> arguments) {
                       1, //de cada vez que o forEach é percorrido, incrementa 1 no count
                 });
         mediaCobertura = totalCobertura / count;
-        print(
-            "A média da cobertura da seguradora é: $mediaCobertura€ em $count apólices ativas.\n");
+        print("A média da cobertura da seguradora é: $mediaCobertura€ em $count apólice(s) ativa(s).\n");
         break;
 
       case 4:
@@ -169,8 +141,7 @@ void main(List<String> arguments) {
             //se a apólice estiver ativa dá mostra a média e a quantidade de apólices ativas
             if (ad == true) {
               mediaCobertura = totalCobertura / count;
-              print(
-                  "A média da cobertura do Tipo de Seguro 'Saúde' é: $mediaCobertura€ em $count apólices ativas.\n");
+              print("A média da cobertura do Tipo de Seguro 'Saúde' é: $mediaCobertura€ em $count apólice(s) ativa(s).\n");
             }
             //se a apólice não estiver ativa dá print a dizer isso mesmo
             else {
@@ -191,8 +162,7 @@ void main(List<String> arguments) {
                     });
             if (ad == true) {
               mediaCobertura = totalCobertura / count;
-              print(
-                  "A média da cobertura do Tipo de Seguro 'Automóvel' é: $mediaCobertura€ em $count apólices ativas.\n");
+              print("A média da cobertura do Tipo de Seguro 'Automóvel' é: $mediaCobertura€ em $count apólice(s) ativa(s).\n");
             } else {
               print("Não existem apólices ativas para este tipo de seguro.\n");
             }
@@ -209,8 +179,7 @@ void main(List<String> arguments) {
                     });
             if (ad == true) {
               mediaCobertura = totalCobertura / count;
-              print(
-                  "A média da cobertura do Tipo de Seguro 'Casa' é: $mediaCobertura€ em $count apólices ativas.\n");
+              print("A média da cobertura do Tipo de Seguro 'Casa' é: $mediaCobertura€ em $count apólice(s) ativa(s).\n");
             } else {
               print("Não existem apólices ativas para este tipo de seguro.\n");
             }
@@ -228,8 +197,7 @@ void main(List<String> arguments) {
                     });
             if (ad == true) {
               mediaCobertura = totalCobertura / count;
-              print(
-                  "A média da cobertura do Tipo de Seguro 'Viagem' é: $mediaCobertura€ em $count apólices ativas.\n");
+              print("A média da cobertura do Tipo de Seguro 'Viagem' é: $mediaCobertura€ em $count apólice(s) ativa(s).\n");
             } else {
               print("Não existem apólices ativas para este tipo de seguro.\n");
             }
@@ -270,8 +238,7 @@ void main(List<String> arguments) {
         //instanciar variáveis que vão ser usadas para calcular o total dos prémios
         double totalPremios = 0.0;
 
-        print(
-            "\nAs apólices ativas da seguradora, juntamente com o prémio anual, são:\n");
+        print("\nAs apólices ativas da seguradora, juntamente com o prémio anual, são:\n");
         //elementos de apolices que estão ativos e em que o nome de seguradora é igual ao input do utilizador - usado o toUpperCase para que quer que o utilizador utilize capitalização
         //ou não, seja possivel comparar
         apolices
@@ -303,8 +270,7 @@ Prémio anual: ${element.valorAnual} €\n'''),
 
         switch (escolha) {
           case 1:
-            print(
-                "\nAs apólices ativas do Tipo de seguro 'Saúde', juntamente com o prémio anual, são:\n");
+            print("\nAs apólices ativas do Tipo de seguro 'Saúde', juntamente com o prémio anual, são:\n");
             apolices
                 .where((element) =>
                     element.ativo == true && element.tipoSeguro.name == "saude")
@@ -314,13 +280,11 @@ Nome da Seguradora: ${element.nomeSeguradora};
 Prémio anual: ${element.valorAnual} €\n'''),
                       totalPremios += element.valorAnual,
                     });
-            print(
-                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            print("Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
             break;
 
           case 2:
-            print(
-                "\nAs apólices ativas do Tipo de seguro 'Automóvel', juntamente com o prémio anual, são:\n");
+            print("\nAs apólices ativas do Tipo de seguro 'Automóvel', juntamente com o prémio anual, são:\n");
             apolices
                 .where((element) =>
                     element.ativo == true &&
@@ -331,13 +295,11 @@ Nome da Seguradora: ${element.nomeSeguradora};
 Prémio anual: ${element.valorAnual} €\n'''),
                       totalPremios += element.valorAnual,
                     });
-            print(
-                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            print("Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
             break;
 
           case 3:
-            print(
-                "\nAs apólices ativas do Tipo de seguro 'Casa', juntamente com o prémio anual, são:\n");
+            print("\nAs apólices ativas do Tipo de seguro 'Casa', juntamente com o prémio anual, são:\n");
             apolices
                 .where((element) =>
                     element.ativo == true && element.tipoSeguro.name == "casa")
@@ -347,13 +309,11 @@ Nome da Seguradora: ${element.nomeSeguradora};
 Prémio anual: ${element.valorAnual} €\n'''),
                       totalPremios += element.valorAnual,
                     });
-            print(
-                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            print("Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
             break;
 
           case 4:
-            print(
-                "\nAs apólices ativas do Tipo de seguro 'Viagem', juntamente com o prémio anual, são:\n");
+            print("\nAs apólices ativas do Tipo de seguro 'Viagem', juntamente com o prémio anual, são:\n");
             apolices
                 .where((element) =>
                     element.ativo == true &&
@@ -364,8 +324,7 @@ Nome da Seguradora: ${element.nomeSeguradora};
 Prémio anual: ${element.valorAnual} €\n'''),
                       totalPremios += element.valorAnual,
                     });
-            print(
-                "Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
+            print("Valor total dos prémios do tipo de seguro: $totalPremios €/ano.");
             break;
 
           case 0:
@@ -379,8 +338,7 @@ Prémio anual: ${element.valorAnual} €\n'''),
         apolices.where((element) => element.ativo == true).forEach((element) {
           totalPremios += element.valorAnual;
         });
-        print(
-            "O valor de todos os prémios das apólices ativas é: $totalPremios €/ano");
+        print("O valor de todos os prémios das apólices ativas é: $totalPremios €/ano");
         break;
       case 8:
         print("-- Seguradoras --\n");
@@ -404,13 +362,13 @@ Prémio anual: ${element.valorAnual} €\n'''),
                       .where((i) => i.nomeTomador == element.nomeTomador)
                       .forEach((i) {
                     print('''
-              Tomador: ${element.nomeTomador},
-              Seguradora: ${element.nomeSeguradora},
-              Tipo de seguro: ${i.tipoSeguro.name},
-              Segurado: ${i.nomesegurado}
-              --------------------------------
-              Morada do Tomador: ${i.moradaTomador},
-              Idade do Tomador: ${i.idade} anos\n''');
+Tomador: ${element.nomeTomador},
+Seguradora: ${element.nomeSeguradora},
+Tipo de seguro: ${i.tipoSeguro.name},
+Segurado: ${i.nomesegurado}
+--------------------------------
+Morada do Tomador: ${i.moradaTomador},
+Idade do Tomador: ${i.idade} anos\n''');
                   })
                 });
         break;
@@ -419,11 +377,10 @@ Prémio anual: ${element.valorAnual} €\n'''),
         print("--Segurados --\n");
         //para cada elemento em apolices, mostra os valores dos segurados
         apolices.forEach((e) {
-          print('''
-            Segurado: ${e.segurado}
-            Tomador : ${e.nomeTomador}
-            Nome Seguradora : ${e.nomeSeguradora}
-            Tipo Seguradora : ${e.tipoSeguro.name}\n''');
+          print('''Segurado: ${e.segurado}
+Tomador : ${e.nomeTomador}
+Nome Seguradora : ${e.nomeSeguradora}
+Tipo Seguradora : ${e.tipoSeguro.name}\n''');
         });
         break;
 
@@ -440,22 +397,53 @@ Prémio anual: ${element.valorAnual} €\n'''),
         //para cada elemento em apólices, mostra os valores
         apolices.forEach((element) {
           print('Nome do Tomador: ${element.nomeTomador}\n'
-              'Nome da Seguradora: ${element.nomeSeguradora}\n'
-              'Tipo de Seguro: ${element.tipoSeguro.name}\n'
-              'Tempo de Seguro: ${element.tempoDeSeguro} (anos)\n'
-              'Cobertura: ${element.cobertura} (euros)\n'
-              'Valor anual: ${element.valorAnual} (euros)\n'
-              'Estado: ${element.ativo} (true=ativo; false=inativo)\n');
+'Nome da Seguradora: ${element.nomeSeguradora}\n'
+'Tipo de Seguro: ${element.tipoSeguro.name}\n'
+'Segurado: ${element.segurado}\n'
+'Tempo de Seguro: ${element.tempoDeSeguro} (anos)\n'
+'Cobertura: ${element.cobertura} (euros)\n'
+'Valor anual: ${element.valorAnual} (euros)\n'
+'Estado: ${element.ativo} (true=ativo; false=inativo)\n');
         });
         break;
 
       case 13:
         //lê os inputs do utilizador, à medida que o programa vai pedindo, para inserir esses dados em apolices
         print("------------------------Apolice----------------");
-        print("Insira o nome do Tomador:");
+        print("Insira o nome do Tomador");
         String nome = stdin.readLineSync()!;
-        print("Insira o nome da Seguradora ");
+        print("Insira o nome da Seguradora");
         String nomeSeguradora = stdin.readLineSync()!;
+
+        print("\n--Selecione o tipo de seguro:--");
+        print("1- Saúde\n2- Automóvel\n3- Casa\n4- Viagem");
+        // lê o input do utilizador
+        var ler = stdin.readLineSync()!;
+        var escolha = int.parse(ler);
+        TipoSeguro tipoSeguro = TipoSeguro.automovel;
+
+        switch(escolha){
+            case 1:
+              tipoSeguro = TipoSeguro.saude;
+            break;
+
+            case 2:
+             tipoSeguro = TipoSeguro.automovel;
+            break;
+
+            case 3:
+              tipoSeguro = TipoSeguro.casa;
+            break;
+
+            case 4: 
+             tipoSeguro = TipoSeguro.viagem; 
+            break;
+
+            default:
+              print("Selecione um valor correspondente ao tipo de seguro");
+            break;
+        }
+        
         print("Insira o tempo do Seguro");
         double tempoSeguro = double.parse(stdin.readLineSync()!);
         print("Insira o nome do Segurado");
@@ -464,15 +452,13 @@ Prémio anual: ${element.valorAnual} €\n'''),
         double cobertura = double.parse(stdin.readLineSync()!);
         print("Insira o Valor Anual");
         double valorAnual = double.parse(stdin.readLineSync()!);
-        apolices.add(Apolice(nome, nomeSeguradora, TipoSeguro.automovel,
+        apolices.add(Apolice(nome, nomeSeguradora, tipoSeguro,
             tempoSeguro, segurado, cobertura, valorAnual, true));
         print("-----------------------------------------------------");
         break;
 
       case 14:
         //lê os inputs do utilizador, à medida que o programa vai pedindo, para inserir esses dados nas seguradoras
-        print("-----------------------Seguradora---------------------");
-
         print("Insira o nome da Seguradora:");
         String nome = stdin.readLineSync()!;
         if (seguradoras.any((e) => e.nomeSeguradora == nome)) {
