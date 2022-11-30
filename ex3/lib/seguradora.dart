@@ -1,9 +1,9 @@
 class Seguradora {
   int id;
-  String? nomeSeguradora;
-  String? moradaSeguradora;
-  int? anoCriacao;
-  int? numeroTelefone;
+  String nomeSeguradora;
+  String moradaSeguradora;
+  int anoCriacao;
+  int numeroTelefone;
 
   Seguradora(this.id, this.nomeSeguradora, this.moradaSeguradora,
       this.anoCriacao, this.numeroTelefone);

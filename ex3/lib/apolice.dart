@@ -1,13 +1,13 @@
 import 'tipo_seguro.dart';
 
 class Apolice {
-  String? nomeTomador;
-  String? nomeSeguradora;
+  String nomeTomador;
+  String nomeSeguradora;
   TipoSeguro tipoSeguro;
-  double? tempoDeSeguro;
-  String? segurado;
+  double tempoDeSeguro;
+  String segurado;
   double cobertura;
-  double? valorAnual;
+  double valorAnual;
   bool ativo;
 
   Apolice(
@@ -35,6 +35,6 @@ List<Apolice> apolices = [
       1204.2, true),
   Apolice("Ana Fernandes", "Fidelidade", TipoSeguro.viagem, 2, "Viagem", 300,
       876.4, false),
-  Apolice("Filipe Antunes", "Advance Care", TipoSeguro.saude, 20, "Visão",
-      349.4, 998.3, false),
+  Apolice("Filipe Antunes", "ACE Europe", TipoSeguro.saude, 20, "Visão", 349.4,
+      998.3, false),
 ];
