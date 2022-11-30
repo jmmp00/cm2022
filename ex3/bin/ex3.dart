@@ -8,43 +8,39 @@ import 'package:ex3/tomadores.dart';
 void main(List<String> arguments) {
   while (true) {
     print("\n");
-    print(
-        "-----------------------------------------------------------------------------");
-    print("             Seguradora 'Surpresas Existem!'");
+    print("-----------------------------------------------------------------------------");
+    print("                   Seguradora 'Surpresas Existem!'");
     print("\n");
-    print(
-        "------------------------Escolha uma das opções abaixo------------------------");
+    print("------------------------Escolha uma das opções abaixo------------------------");
     print("1 - Quantidade de apólices ativas");
     print("2 - Quantidade de apólices inativas");
-    print(
-        "3 - Quantidade de apólices ativas e valor médio segurado por seguradora");
-    print(
-        "4 - Quantidade de apólices ativas e valor médio segurado por tipo de seguro");
+    print("3 - Quantidade de apólices ativas e valor médio segurado por seguradora");
+    print("4 - Quantidade de apólices ativas e valor médio segurado por tipo de seguro");
     print("5 - Apólices ativas e valor do prémio a pagar por seguradora");
     print("6 - Apólices ativas e valor do prémio a pagar por tipo de seguro");
-    print(
-        "-----------------------------Sobre cada apólice------------------------------");
+    print("-----------------------------Sobre cada apólice------------------------------");
     print("7 - Seguradora");
     print("8 - Tomador");
     print("9 - Segurado");
     print("10 - Tipos de Seguros");
     print("11 - Apólices");
-    print("12 -Inserir Apolice ");
-    print("13 - Inserir Seguradora ");
-    print("14 - Delete Seguradora");
+    print("12 - Inserir Apólice");
+    print("13 - Inserir Seguradora");
+    print("14 - Apagar Seguradora");
     print("0 - Sair");
-    print(
-        "-----------------------------------------------------------------------------");
+    print("-----------------------------------------------------------------------------");
     print("\n");
 
-    Seguradoras nelo = Seguradoras();
+    Seguradoras nelo = Seguradoras(); //nova instância de seguradora
 
+    // lê o input do utilizador
     var input = stdin.readLineSync()!;
     var escolha = int.parse(input);
+
     switch (escolha) {
       case 1:
         stdout.write("Existem ");
-        stdout.write(apolices
+        print(apolices
             .where((element) => element.ativo == true)
             .length); //mostra a quantidade de apolices quando o elemento "ativo" for "true"
         stdout.write(" apólices ativas.");
@@ -60,52 +56,56 @@ void main(List<String> arguments) {
         break;
 
       case 3:
-       
+        //criação de uma lista ss
         List<String> ss = [];
-        print("\n--Escreva o nome da Seguradora:--");
+      
         //para cada apolice ativa adiciona o nome da seguradora à lista ss
         apolices.where((element) => element.ativo == true ).forEach((element) => {
           
         //se o nome da seguradora nao constar na lista, este é adicionado  
         if (ss.contains(element.nomeSeguradora) == false){
-          
-          ss.add(element.nomeSeguradora),
-   
-        }
-        });
-        
+          ss.add(element.nomeSeguradora)
+        }});
+
+        print("\n--Escreva o nome da Seguradora:--");
         stdout.write("$ss\n");
         print("Prima 0 para voltar");
         print("-----------------------------------\n");
+        //lê o input do utilizador e, caso seja 0, para
         var ler = stdin.readLineSync()!;
         if (ler == "0") {
           break;
         }
 
+        //instanciar variáveis que vão ser usadas para calcular a média
         double totalCobertura = 0.0;
         double mediaCobertura = 0.0;
         int count = 0;
         
+        //elementos de apolices que estão ativos e em que o nome de seguradora é igual ao input do utilizador - usado o toUpperCase para que quer que o utilizador utilize capitalização
+        //ou não, seja possivel comparar
         apolices.where((element) => element.ativo == true && element.nomeSeguradora.toUpperCase() == ler.toUpperCase()).forEach((element) => {
           totalCobertura += element.cobertura,
-          count += 1,
-
+          count += 1, //de cada vez que o forEach é percorrido, incrementa 1 no count
           });
           mediaCobertura = totalCobertura / count;
           print("A média da cobertura da seguradora é: $mediaCobertura€ em $count apólices ativas.\n");
-        
-        
         break;
 
       case 4:
+        //criação de um bool para verificar se a apólice está ativa ou não
         bool ad = true;
+
         print("\n--Selecione o tipo de seguro:--");
         print("1- Saúde\n2- Automóvel\n3- Casa\n4- Viagem");
         print("0- Voltar");
         print("-------------------------------\n");
+
+        // lê o input do utilizador
         var ler = stdin.readLineSync()!;
         var escolha = int.parse(ler);
 
+        //instanciar variáveis que vão ser usadas para calcular a média
         double totalCobertura = 0.0;
         double mediaCobertura = 0.0;
         int count = 0;
@@ -117,14 +117,17 @@ void main(List<String> arguments) {
                     element.ativo == true && element.tipoSeguro.name == "saude")
                 .forEach((element) => {
                       totalCobertura += element.cobertura,
-                      count += 1,
-                      ad = element.ativo,
+                      count += 1, //de cada vez que o forEach é percorrido, incrementa 1 no count
+                      ad = element.ativo, //o bool criado em cima vai ser true se a apólice estiver ativa
                     });
+            //se a apólice estiver ativa dá mostra a média e a quantidade de apólices ativas
             if (ad == true) {
               mediaCobertura = totalCobertura / count;
               print(
                   "A média da cobertura do Tipo de Seguro 'Saúde' é: $mediaCobertura€ em $count apólices ativas.\n");
-            } else {
+            } 
+            //se a apólice não estiver ativa dá print a dizer isso mesmo
+            else {
               print("Não existem apólices ativas para este tipo de seguro.\n");
             }
 
@@ -147,7 +150,7 @@ void main(List<String> arguments) {
             } else {
               print("Não existem apólices ativas para este tipo de seguro.\n");
             }
-            break;
+          break;
 
           case 3:
             apolices
@@ -187,29 +190,30 @@ void main(List<String> arguments) {
             break;
 
           case 0:
-            break;
+          break;
         }
         break;
 
       case 5:
-        break;
+      break;
 
       case 6:
-        break;
+      break;
 
       case 7:
         print("-- Seguradoras --\n");
+        //para cada elemento em seguradoras, mostra os valores
         seguradoras.forEach((element) {
           print('Nome: ${element.nomeSeguradora}\n'
               'Morada: ${element.moradaSeguradora}\n'
               'Ano de Fundação: ${element.anoCriacao}\n'
               'Contacto: ${element.numeroTelefone}\n');
         });
-        break;
+      break;
 
       case 8:
         print("-- Tomadores --\n");
-
+        //para as apólices ativas e caso o nome do tomador em tomadores seja igual ao nome do tomador em apolices, mostra os valores
         apolices
             .where((element) => element.ativo == true)
             .forEach((element) => {
@@ -226,10 +230,11 @@ void main(List<String> arguments) {
               Idade do Tomador: ${i.idade} anos\n''');
                   })
                 });
-        break;
+      break;
 
       case 9:
-        print("--Seguradores --\n");
+        print("--Segurados --\n");
+        //para cada elemento em apolices, mostra os valores dos segurados
         apolices.forEach((e) {
           print('''
             Segurado: ${e.segurado}
@@ -237,16 +242,19 @@ void main(List<String> arguments) {
             Nome Seguradora : ${e.nomeSeguradora}
             Tipo Seguradora : ${e.tipoSeguro.name}\n''');
         });
-        break;
+      break;
 
       case 10:
         print("-- Tipos de Seguros --\n");
+        //mostra os valores dos elementos de TipoSeguros
         TipoSeguro.values.forEach((element) {
           print('${element.name}');
         });
-        break;
+      break;
+
       case 11:
         print("-- Apolices --\n");
+        //para cada elemento em apólices, mostra os valores
         apolices.forEach((element) {
           print('Nome do Tomador: ${element.nomeTomador}\n'
               'Nome da Seguradora: ${element.nomeSeguradora}\n'
@@ -256,8 +264,10 @@ void main(List<String> arguments) {
               'Valor anual: ${element.valorAnual} (euros)\n'
               'Estado: ${element.ativo} (true=ativo; false=inativo)\n');
         });
-        break;
+      break;
+
       case 12:
+        //lê os inputs do utilizador, à medida que o programa vai pedindo, para inserir esses dados em apolices
         print("------------------------Apolice----------------");
         print("Insira o nome do Tomador:");
         String nome = stdin.readLineSync()!;
@@ -274,8 +284,10 @@ void main(List<String> arguments) {
         apolices.add(Apolice(nome, nomeSeguradora, TipoSeguro.automovel,
             tempoSeguro, segurado, cobertura, valorAnual, true));
         print("-----------------------------------------------------");
-        break;
+      break;
+
       case 13:
+        //lê os inputs do utilizador, à medida que o programa vai pedindo, para inserir esses dados nas seguradoras
         print("-----------------------Seguradora---------------------");
         print("Insira o nome da Seguradora:");
         String nome = stdin.readLineSync()!;
@@ -288,16 +300,19 @@ void main(List<String> arguments) {
         nelo.add(Seguradora(5, nome, morada, anoCriacao, numeroTelefone));
         print(nelo.list);
         print("-----------------------------------------------------");
-        break;
+      break;
+
       case 14:
+        //apaga das seguradoras a seguradora com o id escolhido
         int id = int.parse(stdin.readLineSync()!);
         var index = nelo.list.indexWhere((i) => i.id == id);
         nelo.delete(nelo.list[0]);
+      break;
 
-        break;
       case 0:
         print("Até à próxima! :)");
-        exit(2);
+      //sai do programa
+      exit(0);
     }
   }
 }
