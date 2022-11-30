@@ -27,7 +27,7 @@ class Apolice {
 List<Apolice> apolices = [
   Apolice("Joana Pinheiro", "OK! Teleseguros", TipoSeguro.automovel, 10,
       "Opel Corsa", 325.5, 950, true),
-  Apolice("Telmo Santos", "Médis", TipoSeguro.saude, 25, "Dentário", 453.8,
+  Apolice("Telmo Santos", "Medis", TipoSeguro.saude, 25, "Dentário", 453.8,
       1380, true),
   Apolice("Gustavo Gomes", "OK! Teleseguros", TipoSeguro.casa, 30,
       "Imobiliario", 304, 963.7, true),

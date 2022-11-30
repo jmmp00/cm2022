@@ -60,11 +60,22 @@ void main(List<String> arguments) {
         break;
 
       case 3:
-        bool ad = true;
+       
+        List<String> ss = [];
         print("\n--Escreva o nome da Seguradora:--");
-        seguradoras
-            .forEach((element) => {print("- ${element.nomeSeguradora}")});
-        print("- Prima 0 para voltar");
+        //para cada apolice ativa adiciona o nome da seguradora à lista ss
+        apolices.where((element) => element.ativo == true ).forEach((element) => {
+          
+        //se o nome da seguradora nao constar na lista, este é adicionado  
+        if (ss.contains(element.nomeSeguradora) == false){
+          
+          ss.add(element.nomeSeguradora),
+   
+        }
+        });
+        
+        stdout.write("$ss\n");
+        print("Prima 0 para voltar");
         print("-----------------------------------\n");
         var ler = stdin.readLineSync()!;
         if (ler == "0") {
@@ -74,22 +85,16 @@ void main(List<String> arguments) {
         double totalCobertura = 0.0;
         double mediaCobertura = 0.0;
         int count = 0;
+        
+        apolices.where((element) => element.ativo == true && element.nomeSeguradora.toUpperCase() == ler.toUpperCase()).forEach((element) => {
+          totalCobertura += element.cobertura,
+          count += 1,
 
-        apolices
-            .where((element) =>
-                element.nomeSeguradora?.toUpperCase() == ler.toUpperCase())
-            .forEach((element) => {
-                  totalCobertura += element.cobertura,
-                  count += 1,
-                  ad = element.ativo,
-                });
-        if (ad == true) {
+          });
           mediaCobertura = totalCobertura / count;
-          print(
-              "A média da cobertura da seguradora é: $mediaCobertura€ em $count apólices ativas.\n");
-        } else {
-          print("Não existem apólices ativas para esta seguradora.\n");
-        }
+          print("A média da cobertura da seguradora é: $mediaCobertura€ em $count apólices ativas.\n");
+        
+        
         break;
 
       case 4:
